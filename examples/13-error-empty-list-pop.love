@@ -1,0 +1,6 @@
+baby ignore karo Edge case error demo: popping an empty list should fail.
+
+bolo "edge-case: empty list pop"
+yaad inbox hai list_nayi()
+yaad popped hai list_nikaal(inbox)
+bolo popped

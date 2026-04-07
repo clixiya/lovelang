@@ -1,0 +1,16 @@
+baby ignore karo Example 05: festival blocks for themed execution.
+baby ignore karo Learnings: named block execution with festival keyword.
+~~ C equivalent sketch:
+~~ printf("festival mode: diwali\n"); printf("roshni hi roshni\n");
+~~ printf("festival mode: valentine\n");
+~~ printf("miss you jaan\n"); printf("auto reply\n"); printf("play song\n");
+
+festival diwali {
+  bolo "roshni hi roshni";
+}
+
+festival valentine {
+  bolo "jaan";
+  bolo "maa bula rahi hai";
+  bolo "romantic_song.mp3";
+}

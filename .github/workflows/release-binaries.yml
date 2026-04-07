@@ -1,0 +1,140 @@
+name: release-binaries
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to publish (example: v1.0.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  RELEASE_TAG: ${{ github.event_name == 'push' && github.ref_name || github.event.inputs.tag }}
+
+jobs:
+  build-linux-and-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: "0.13.0"
+
+      - name: Build Linux and Windows binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          COMMON_FLAGS="-std=c11 -Wall -Wextra -O2 -Iinclude src/main.c src/lexer.c src/parser.c src/runtime.c"
+
+          zig cc -target x86_64-linux-gnu ${COMMON_FLAGS} -o dist/lovelang-linux-x64
+          zig cc -target aarch64-linux-gnu ${COMMON_FLAGS} -o dist/lovelang-linux-arm64
+          zig cc -target x86_64-windows-gnu ${COMMON_FLAGS} -o dist/lovelang-win32-x64.exe
+          zig cc -target aarch64-windows-gnu ${COMMON_FLAGS} -o dist/lovelang-win32-arm64.exe
+
+          chmod +x dist/lovelang-linux-x64 dist/lovelang-linux-arm64
+
+      - name: Upload Linux and Windows artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-linux-and-windows
+          path: dist/*
+
+  build-macos-x64:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build macOS x64 binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          cc -std=c11 -Wall -Wextra -O2 -Iinclude \
+            -arch x86_64 \
+            src/main.c src/lexer.c src/parser.c src/runtime.c \
+            -o dist/lovelang-darwin-x64
+          chmod +x dist/lovelang-darwin-x64
+
+      - name: Upload macOS x64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-darwin-x64
+          path: dist/lovelang-darwin-x64
+
+  build-macos-arm64:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build macOS arm64 binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          cc -std=c11 -Wall -Wextra -O2 -Iinclude \
+            src/main.c src/lexer.c src/parser.c src/runtime.c \
+            -o dist/lovelang-darwin-arm64
+          chmod +x dist/lovelang-darwin-arm64
+
+      - name: Upload macOS arm64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-darwin-arm64
+          path: dist/lovelang-darwin-arm64
+
+  publish-release:
+    needs:
+      - build-linux-and-windows
+      - build-macos-x64
+      - build-macos-arm64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Linux and Windows artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: binaries-linux-and-windows
+          path: dist
+
+      - name: Download macOS x64 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: binaries-darwin-x64
+          path: dist
+
+      - name: Download macOS arm64 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: binaries-darwin-arm64
+          path: dist
+
+      - name: Generate checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd dist && shasum -a 256 * > checksums.txt)
+
+      - name: Create or update GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          files: |
+            dist/lovelang-darwin-x64
+            dist/lovelang-darwin-arm64
+            dist/lovelang-linux-x64
+            dist/lovelang-linux-arm64
+            dist/lovelang-win32-x64.exe
+            dist/lovelang-win32-arm64.exe
+            dist/checksums.txt
+          fail_on_unmatched_files: true

@@ -1,0 +1,95 @@
+name: playground-wasm
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "include/**"
+      - "web/playground.html"
+      - "web/js/playground.js"
+      - ".github/workflows/playground-wasm.yml"
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Deploy website with updated WASM runtime to GitHub Pages"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.64
+
+      - name: Build Lovelang WebAssembly runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p web/dist
+          emcc -std=c11 -O3 -Iinclude \
+            src/main.c src/lexer.c src/parser.c src/runtime.c \
+            -s WASM=1 \
+            -s MODULARIZE=1 \
+            -s EXPORT_ES6=1 \
+            -s EXPORT_NAME=createLovelangModule \
+            -s FORCE_FILESYSTEM=1 \
+            -s NO_EXIT_RUNTIME=1 \
+            -s ALLOW_MEMORY_GROWTH=1 \
+            -s EXPORTED_FUNCTIONS='["_main"]' \
+            -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","FS","callMain"]' \
+            -o web/dist/lovelang.js
+
+      - name: Upload wasm playground artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-playground
+          path: web/dist
+
+  deploy-pages:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'true' }}
+    needs: build-wasm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download wasm playground artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-playground
+          path: tmp/wasm-playground-dist
+
+      - name: Merge wasm playground into website
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf web/dist
+          mkdir -p web/dist
+          cp -R tmp/wasm-playground-dist/* web/dist/
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

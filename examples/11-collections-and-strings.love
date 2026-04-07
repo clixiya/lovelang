@@ -1,0 +1,41 @@
+baby ignore karo Example 11: collections + string toolkit + type helpers.
+
+bolo "collections + strings"
+
+yaad names hai list_nayi()
+list_daal(names, "clixiya")
+list_daal(names, "rani")
+bolo lambai(names)
+bolo lafz_join(names, ", ")
+
+yaad second hai list_lao(names, 1)
+bolo second
+
+list_set(names, 0, "DEE")
+bolo lafz_join(names, " | ")
+
+yaad popped hai list_nikaal(names)
+bolo popped
+bolo lafz_join(names, ", ")
+
+yaad text hai "   PyAr Se  "
+bolo lafz_trim(text)
+bolo lafz_lower(text)
+bolo lafz_upper(text)
+bolo lafz_contains("i love code", "love")
+bolo lafz_replace("i love code", "love", "adore")
+
+yaad parts hai lafz_split("a,b,c", ",")
+bolo lambai(parts)
+
+yaad jhola hai map_naya()
+map_set(jhola, "city", "mumbai")
+map_set(jhola, "year", 2026)
+bolo map_has(jhola, "city")
+bolo map_get(jhola, "city")
+
+yaad keys hai map_keys(jhola)
+bolo lafz_join(keys, ", ")
+
+bolo type_of(keys)
+bolo type_of(jhola)

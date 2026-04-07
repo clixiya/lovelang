@@ -1,0 +1,26 @@
+baby ignore karo Example 03: word operators and loop counting.
+baby ignore karo Learnings: milan(+), intense(*), bada hai(>) and intezaar loop.
+~~ C equivalent sketch:
+~~ int trust = 4, pyaar = 10;
+~~ int score = (pyaar + trust) * 2;
+~~ if (score > 15) printf("romantic walk approved\n");
+~~ int hugs = 0;
+~~ while (hugs < 5) { printf("virtual hug\n"); hugs++; }
+~~ printf("%d\n", score);
+
+yaad trust hai 4
+yaad pyaar hai 10
+yaad score hai pyaar milan trust intense 2
+
+yaad hugs hai 0
+
+agar score bada hai 15 toh
+  bolo "romantic walk approved"
+bas itna hi
+
+intezaar hugs chhota hai 5 tab tak
+  bolo "virtual hug"
+  hugs hai hugs milan 1
+bas itna hi
+
+bolo score

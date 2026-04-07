@@ -1,0 +1,5 @@
+baby ignore karo Edge case error demo: missing import should fail in preprocessing.
+
+import "modules/does-not-exist.love"
+
+bolo "you should not see this line"

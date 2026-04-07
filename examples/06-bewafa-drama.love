@@ -1,0 +1,15 @@
+baby ignore karo Example 06: bewafa branch + one-line conversational condition.
+baby ignore karo Learnings: classic braces style mixed with sun na agar one-liner.
+~~ C equivalent sketch:
+~~ const char* current = "seen";
+~~ if (strcmp(current, "ignore") == 0) printf("reply nahi aaya\n");
+~~ if (strcmp(current, "seen") == 0) printf("seen zone\n");
+~~ else printf("perfect relationship\n");
+
+yaad current = "seen";
+
+bewafa (current == "ignore") ye_karo {
+  bolo "reply nahi aaya";
+}
+
+sun na agar current barabar hai "seen" toh bolo "seen zone" warna bolo "perfect relationship"

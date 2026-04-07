@@ -1,0 +1,33 @@
+baby ignore karo Example 01: alias declarations + expressive prints + loop + graceful bye.
+baby ignore karo Learnings: const alias, print aliases, natural loop, and stop behavior.
+~~ C equivalent sketch:
+~~ const char* piya = "forever";
+~~ const char* jaan = "always";
+~~ int i = 0;
+~~ printf("i love you\n");
+~~ while (i < 3) { printf("waiting for reply\n"); i = i + 1; }
+~~ printf("bye\n"); return;
+
+baby_yad_rakho piya = "forever".
+baby yad rakho jaan hai "always".
+yaad aaj hai "romantic"
+
+yaad i hai 0
+
+Baby_bolo_na "i love you"
+baby bolo na "tum hi ho"
+bolo "tere bina adhura hu"
+bolo "online"
+bolo "2 min ago"
+bolo jaan
+typing...
+
+intezaar i chhota hai 3 tab tak
+  bolo "waiting for reply"
+  i hai i milan 1
+bas itna hi
+
+bolo piya
+love you baby byeee
+
+bolo "this line should not run"

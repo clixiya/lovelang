@@ -1,0 +1,19 @@
+baby ignore karo Example 12: import/export + defaults/named args + filesystem builtins.
+
+import "modules/romantic_utils.love"
+
+bolo greet("Clixiya")
+bolo greet("Clixiya", mood = "shayari", punct = "...")
+bolo duo("tum")
+
+yaad note_file hai "examples/test/module_note.txt"
+ishq_likhdo(note_file, "line1")
+ishq_joddo(note_file, "\nline2")
+
+bolo raasta_hai_kya(note_file)
+yaad data hai dil_khol_ke_padho(note_file)
+bolo data
+
+bolo to_text(to_int("42") milan 8)
+bolo to_bool("")
+bolo to_bool("x")

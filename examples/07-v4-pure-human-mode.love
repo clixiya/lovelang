@@ -1,0 +1,19 @@
+baby ignore karo Example 07: pure human mode with almost no symbols.
+baby ignore karo Learnings: conversational one-liner and natural if/else block.
+~~ C equivalent sketch:
+~~ const char* name = "jaan";
+~~ const char* state = "seen";
+~~ if (strcmp(state, "romantic") == 0) printf("i love you\n"); else printf("so ja\n");
+~~ if (strcmp(state, "ignore") == 0) printf("reply nahi aaya\n");
+~~ else printf("Last seen: 2 min ago\n");
+
+yaad name hai "jaan"
+yaad state hai "seen"
+
+sun na agar state equal hai "romantic" toh bolo "i love you" warna bolo "so ja"
+
+agar state barabar hai "ignore" toh
+  bolo "reply nahi aaya"
+warna
+  bolo "2 min ago"
+bas itna hi

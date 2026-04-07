@@ -1,0 +1,58 @@
+baby ignore karo Example 16: consolidated demo for all new language-core features.
+
+import "modules/romantic_utils.love"
+
+dhadkan banner(title, wrap = "***") {
+  ehsaas wrap milan " " milan title milan " " milan wrap
+}
+
+bolo banner("ALL FEATURES")
+bolo greet("Clixiya")
+bolo greet("Clixiya", mood = "shayari", punct = "...")
+bolo duo("you")
+
+yaad team hai list_nayi()
+list_daal(team, "clixiya")
+pyaar_daal(team, "nivi")
+list_daal(team, "riya")
+bolo lambai(team)
+bolo lafz_join(team, ", ")
+
+list_set(team, 1, "NIVI")
+bolo list_lao(team, 1)
+bolo list_nikaal(team)
+bolo lafz_join(team, " | ")
+
+yaad profile hai map_naya()
+map_set(profile, "city", "mumbai")
+map_set(profile, "year", to_int("2026"))
+map_set(profile, "members", lambai(team))
+bolo map_has(profile, "city")
+bolo map_get(profile, "year")
+yaad keys hai map_keys(profile)
+bolo len(keys)
+bolo lafz_join(keys, ", ")
+
+yaad raw hai "   pYaAr vIbEs   "
+bolo lafz_trim(raw)
+bolo lafz_lower(raw)
+bolo lafz_upper(raw)
+bolo lafz_contains("love coding forever", "coding")
+bolo lafz_replace("love coding forever", "coding", "shipping")
+yaad bits hai lafz_split("a|b|c", "|")
+bolo lafz_join(bits, "-")
+
+bolo type_of(team)
+bolo kya_type(profile)
+bolo text_banao(int_banao("7") milan 5)
+bolo bool_banao("")
+bolo to_bool("haan")
+
+yaad note_file hai "examples/test/all-features-demo.txt"
+ishq_likhdo(note_file, "line-1")
+ishq_joddo(note_file, "\nline-2")
+bolo file_hai_kya(note_file)
+bolo dil_khol_ke_padho(note_file)
+
+bolo "time: " milan abhi_time()
+bolo "random: " milan kismat(10, 20)

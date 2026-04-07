@@ -1,0 +1,18 @@
+baby ignore karo Example 10: input + random + utility builtins.
+baby ignore karo Learnings: dil_se_pucho/input, kismat, lafz_len, abhi_time, thoda_ruko.
+
+bolo "apna naam likho"
+yaad name hai dil_se_pucho("> ")
+
+yaad lucky hai kismat(1, 100)
+yaad chars hai lafz_len(name)
+yaad now hai abhi_time()
+
+bolo "hey " milan name
+bolo "lucky number: " milan lucky
+bolo "naam length: " milan chars
+bolo "unix time: " milan now
+
+typing...
+thoda_ruko(700)
+bolo "done"

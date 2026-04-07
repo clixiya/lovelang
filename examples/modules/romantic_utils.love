@@ -1,0 +1,10 @@
+baby ignore karo Reusable helpers for import/export demo.
+
+export dhadkan greet(name, mood = "romantic", punct = "!") {
+  yaad line hai mood milan ": " milan name milan punct
+  ehsaas line
+}
+
+export dhadkan duo(a, b = "forever") {
+  ehsaas a milan " + " milan b
+}

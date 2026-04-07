@@ -1,0 +1,21 @@
+baby ignore karo Example 09: natural else-if chain with warna agar.
+baby ignore karo Learnings: chain conditions and a single bas itna hi close.
+~~ C equivalent sketch:
+~~ const char* aaj = "seen";
+~~ if (strcmp(aaj, "ignore") == 0) {
+~~   printf("reply nahi aaya\n");
+~~ } else if (strcmp(aaj, "seen") == 0) {
+~~   printf("seen zone\n");
+~~ } else {
+~~   printf("perfect relationship\n");
+~~ }
+
+yaad aaj hai "seen"
+
+agar aaj barabar hai "ignore" toh
+  bolo "reply nahi aaya"
+warna agar aaj equal hai "seen" toh
+  bolo "seen zone"
+warna
+  bolo "perfect relationship"
+bas itna hi

@@ -1,0 +1,20 @@
+baby ignore karo Example 08: alias showcase for declarations and prints.
+baby ignore karo Learnings: underscore and phrase aliases can be mixed.
+~~ C equivalent sketch:
+~~ const char* forever_note = "forever";
+~~ const char* fallback_note = "still forever";
+~~ printf("%s\n", forever_note);
+~~ printf("%s\n", fallback_note);
+~~ printf("Status: online\n"); printf("Last seen: just now\n");
+~~ return; // because love you baby byeee stops execution
+
+baby_yad_rakho forever_note = "forever"
+baby yaad rakho fallback_note hai "still forever"
+
+Baby_bolo_na forever_note
+baby bolo naa fallback_note
+
+bolo "online"
+bolo "just now"
+
+love you baby byeee forever

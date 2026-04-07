@@ -1,0 +1,39 @@
+{
+  "name": "lovelang-runtime",
+  "version": "1.0.0",
+  "description": "Cross-platform Lovelang CLI wrapper that downloads the correct binary from GitHub releases.",
+  "license": "MIT",
+  "homepage": "https://github.com/clixiya/lovelang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clixiya/lovelang.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clixiya/lovelang/issues"
+  },
+  "keywords": [
+    "lovelang",
+    "cli",
+    "interpreter",
+    "desi",
+    "language"
+  ],
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "bin": {
+    "lovelang": "./bin/lovelang.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "scripts/postinstall.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js",
+    "clean": "node scripts/clean.js",
+    "test": "node --test test/*.test.js"
+  }
+}

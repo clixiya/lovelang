@@ -1,0 +1,19 @@
+baby ignore karo Example 02: pure human if/else flow without symbols.
+baby ignore karo Learnings: use "same hai", "toh", "warna", and "bas itna hi".
+~~ C equivalent sketch:
+~~ const char* aaj = "ignore";
+~~ if (strcmp(aaj, "ignore") == 0) {
+~~   printf("reply nahi aaya\n");
+~~ } else {
+~~   printf("reply aa gaya\n");
+~~ }
+
+yaad aaj hai "ignore"
+
+baby bolo naa "hey..."
+
+agar aaj same hai "ignore" toh
+  bolo "reply nahi aaya"
+warna
+  bolo "reply aa gaya"
+bas itna hi

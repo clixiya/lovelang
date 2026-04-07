@@ -1,0 +1,23 @@
+baby ignore karo Example 04: function + return + branch + builtin helpers.
+baby ignore karo Learnings: dhadkan/ehsaas, bewafa conditional, chai/date/auto reply helpers.
+~~ C equivalent sketch:
+~~ bool confess(const char* name) { printf("I love you\n"); printf("miss you %s\n", name); return true; }
+~~ bool accepted = confess("baby");
+~~ if (accepted != true) printf("proposal failed\n"); else printf("proposal accepted\n");
+~~ printf("chai break\n"); printf("Date plan: CCD\n"); printf("Auto reply: maa bula rahi hai\n");
+
+dhadkan confess(name) {
+  bolo "I love you"
+  bolo name
+  ehsaas sach
+}
+
+yaad accepted hai confess("baby")
+
+bewafa accepted alag hai sach toh
+  bolo "proposal failed"
+warna
+  bolo "proposal accepted"
+bas itna hi
+
+love you baby byeee

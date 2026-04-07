@@ -1,0 +1,20 @@
+baby ignore karo Test Example: personal hello + condition + graceful end.
+baby ignore karo Purpose: show natural declarations, natural if/else, and stop phrase.
+~~ C equivalent:
+~~ const char* Elina = "jaan";
+~~ printf("love you\n");
+~~ printf("%s\n", Elina);
+~~ if (strcmp(Elina, "jaan") == 0) printf("welcome\n"); else printf("offline\n");
+
+baby yad rakho Elina = "jaan"
+
+Baby_bolo_na "love you"
+Baby_bolo_na Elina
+
+agar Elina barabar hai "jaan" toh
+  bolo "welcome"
+warna
+  bolo "offline"
+bas itna hi
+
+love you baby byeee

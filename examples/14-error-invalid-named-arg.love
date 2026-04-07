@@ -1,0 +1,6 @@
+baby ignore karo Edge case error demo: unknown named argument should fail.
+
+import "modules/romantic_utils.love"
+
+bolo "edge-case: invalid named argument"
+bolo greet("Clixiya", vibe = "oops")
